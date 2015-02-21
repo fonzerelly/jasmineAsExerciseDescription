@@ -68,6 +68,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     };
     jasmineInterface.xtopic = env.xdescribe;
     jasmineInterface.xchallenge = env.xit;
+    jasmineInterface.pending = function () {
+      return env.pending();
+    };
 
   }());
 
