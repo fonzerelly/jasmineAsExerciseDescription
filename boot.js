@@ -55,9 +55,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    * Build up the functions that will be exposed as the Jasmine public interface. A project can customize, rename or alias any of these functions as desired, provided the implementation remains unchanged.
    */
   var jasmineInterface = jasmineRequire.interface(jasmine, env);
-  jasmineInterface.exercise = function (desc, func) {
-    return env.it(desc, func);
-  };
+  (function() {
+    var exerciseCounter = 0;
+    jasmineInterface.topic = function (desc, func) {
+      exerciseCounter = 0;
+      return env.describe(desc, func);
+    };
+    jasmineInterface.challenge= function (desc, func) {
+      exerciseCounter += 1;
+      var amended = "Challenge " + exerciseCounter + ": " + desc;
+      return env.it(amended, func);
+    };
+    jasmineInterface.xtopic = env.xdescribe;
+    jasmineInterface.xchallenge = env.xit;
+
+  }());
 
   /**
    * Add all of the Jasmine global/public interface to the proper global, so a project can use the public interface directly. For example, calling `describe` in specs instead of `jasmine.getEnv().describe`.

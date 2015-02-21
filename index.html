@@ -7,9 +7,19 @@
 </head>
 <body>
   <script type="text/javascript">
-    describe("test", function () {
-      exercise("should work", function () {
+    topic("Testing is like Exercising", function () {
+      challenge("Write something truthfull.", function () {
         expect(true).toBeTruthy();
+      });
+      challenge("Write something faithfull.", function () {
+        expect(false).toBeFalsy();
+      });
+    });
+    topic("What else", function () {
+      challenge("Do something awsome", function () {
+        var awsome = pending;
+        // var awsome = function () {return true;};
+        expect(awsome()).toBeTruthy();
       });
     });
   </script>
