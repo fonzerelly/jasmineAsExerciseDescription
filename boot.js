@@ -57,21 +57,17 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   var jasmineInterface = jasmineRequire.interface(jasmine, env);
   (function() {
     var exerciseCounter = 0;
-    jasmineInterface.topic = function (desc, func) {
-      exerciseCounter = 0;
-      return env.describe(desc, func);
-    };
     jasmineInterface.challenge= function (desc, func) {
       exerciseCounter += 1;
       var amended = "Challenge " + exerciseCounter + ": " + desc;
-      return env.it(amended, func);
+      return env.describe(amended, function () {
+        env.it("passed", func);
+      });
     };
-    jasmineInterface.xtopic = env.xdescribe;
-    jasmineInterface.xchallenge = env.xit;
+    jasmineInterface.xchallenge = env.xdescribe;
     jasmineInterface.pending = function () {
-      return env.pending();
+      return env.pending("doof");
     };
-
   }());
 
   /**

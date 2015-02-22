@@ -7,20 +7,10 @@
 </head>
 <body>
   <script type="text/javascript">
-    topic("Testing is like Exercising", function () {
-      challenge("Write something truthfull.", function () {
-        expect(true).toBeTruthy();
-      });
-      challenge("Write something faithfull.", function () {
-        expect(false).toBeFalsy();
-      });
-    });
-    topic("What else", function () {
-      challenge("Do something awsome", function () {
-        var awsome = pending;
-        // var awsome = function () {return true;};
-        expect(awsome()).toBeTruthy();
-      });
+    challenge("Do something awsome", function () {
+      var awsome = pending;
+      // var awsome = function () {return true;};
+      expect(awsome(12)).toBeTruthy();
     });
   </script>
 
