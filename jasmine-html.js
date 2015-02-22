@@ -122,7 +122,7 @@ jasmineRequire.HtmlReporter = function(j$) {
         var failure =
           createDom('div', {className: 'spec-detail failed'},
             createDom('div', {className: 'description'},
-              createDom('a', {title: result.fullName, href: specHref(result)}, result.fullName)
+              createDom('a', {title: result.fullName, href: specHref(result)}, result.fullName + result.status)
             ),
             createDom('div', {className: 'messages'})
           );
@@ -225,7 +225,7 @@ jasmineRequire.HtmlReporter = function(j$) {
                   className: resultNode.result.status,
                   id: 'spec-' + resultNode.result.id
                 },
-                createDom('a', {href: specHref(resultNode.result)}, specDescription)
+                createDom('a', {href: specHref(resultNode.result)}, specDescription + resultNode.result.status)
               )
             );
           }
@@ -267,7 +267,7 @@ jasmineRequire.HtmlReporter = function(j$) {
     function clearPrior() {
       // return the reporter
       var oldReporter = find('');
-      
+
       if(oldReporter) {
         getContainer().removeChild(oldReporter);
       }

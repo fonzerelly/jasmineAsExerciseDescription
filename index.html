@@ -7,10 +7,19 @@
 </head>
 <body>
   <script type="text/javascript">
-    challenge("Do something awsome", function () {
+    challenge("Do something pending", function () {
       var awsome = pending;
-      // var awsome = function () {return true;};
       expect(awsome(12)).toBeTruthy();
+    });
+    challenge("Do something faulty", function () {
+      // var awsome = pending;
+      var awsomex = undefined;//function () {return true;};
+      expect(awsomex(12)).toBeTruthy();
+    });
+    challenge("Do anything awsome", function () {
+      // var awsome = pending;
+      var awsomey = function () {return true;};
+      expect(awsomey(12)).toBeTruthy();
     });
   </script>
 

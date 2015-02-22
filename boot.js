@@ -61,7 +61,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       exerciseCounter += 1;
       var amended = "Challenge " + exerciseCounter + ": " + desc;
       return env.describe(amended, function () {
-        env.it("passed", func);
+        env.it("", func);
       });
     };
     jasmineInterface.xchallenge = env.xdescribe;
