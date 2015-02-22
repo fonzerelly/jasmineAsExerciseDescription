@@ -57,6 +57,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   var jasmineInterface = jasmineRequire.interface(jasmine, env);
   (function() {
     var exerciseCounter = 0;
+    jasmineInterface.topic = function (desc, func) {
+      exerciseCounter = 0;
+      return env.describe(desc, func);
+    };
     jasmineInterface.challenge= function (desc, func) {
       exerciseCounter += 1;
       var amended = "Challenge " + exerciseCounter + ": " + desc;
@@ -64,9 +68,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         env.it("", func);
       });
     };
+    jasmineInterface.xtopic = env.xdescribe;
     jasmineInterface.xchallenge = env.xdescribe;
     jasmineInterface.pending = function () {
-      return env.pending("doof");
+      return env.pending();
     };
   }());
 
